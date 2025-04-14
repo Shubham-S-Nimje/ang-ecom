@@ -1,0 +1,49 @@
+<div class="bg-white container mx-auto my-4 min-h-screen">
+  <div class="bg-white hover:shadow rounded-md p-2 md:p-4 flex justify-between">
+    <img [src]="productDetails?.productImageUrl" alt="" class="w-1/2" />
+    <div class="px-2 py-1 bg-white">
+      <p class="uppercase font-semibold text-gray-500">
+        {{ productDetails?.categoryName }}
+      </p>
+      <p class="uppercase font-semibold text-gray-500">
+        {{ productDetails?.productDescription }}
+      </p>
+      <p>{{ productDetails?.productName }}</p>
+      <p>{{ productDetails?.productShortName }}</p>
+      <p>{{ productDetails?.productSku }}</p>
+      <p>₹ {{ productDetails?.productPrice }} /-</p>
+      <p
+        class="bg-green-100 text-green-600 font-medium text-sm w-fit px-2 py-1 rounded-sm"
+      >
+        {{ productDetails?.deliveryTimeSpan }} Delivary
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="bg-white container mx-auto my-4">
+  <h2 class="text-2xl font-medium mx-4 pt-2">Best Of Shirts</h2>
+  <div class="grid grid-cols-2 md:grid-cols-6 gap-2 md:gap-4">
+    <a
+      [routerLink]="['/product', product?.productId]"
+      *ngFor="let product of productsByCatId | slice : 0 : 12"
+      class="bg-white hover:shadow rounded-md p-2 md:p-4"
+    >
+      <img [src]="product?.productImageUrl" alt="" />
+      <div
+        class="text-left px-2 py-1 bg-white transition delay-100 duration-100 ease-in-out hover:-translate-y-1 hover:scale-110"
+      >
+        <p class="uppercase font-semibold text-gray-500">
+          {{ product?.categoryName }}
+        </p>
+        <p>{{ product?.productName }}</p>
+        <p>₹ {{ product?.productPrice }} /-</p>
+        <p
+          class="bg-green-100 text-green-600 font-medium text-sm w-fit px-2 py-1 rounded-sm"
+        >
+          {{ product?.deliveryTimeSpan }} Delivary
+        </p>
+      </div>
+    </a>
+  </div>
+</div>
